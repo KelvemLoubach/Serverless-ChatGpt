@@ -1,0 +1,20 @@
+service: node-chatGPT
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+functions:
+  api:
+    handler: index.handler
+    timeout: 15   
+    events:
+      - httpApi:
+          path: /
+          method: post
+          
+
+
+plugins:
+  - serverless-offline
